@@ -1,0 +1,348 @@
+/* Stile dell'header */
+header {
+    display: flex;
+    font-family: 'Aguzzo Regular' !important;
+    align-items: center; /* Allinea verticalmente gli elementi */
+    justify-content: space-between;
+    padding: 3rem 2% 1rem 2%; /* top right bottom left */
+    color: black;
+    background-color: #fff; /* Cambia se necessario */
+    box-sizing: border-box; /* Assicura che il padding e il margine non influiscano sulle dimensioni totali */
+}
+
+/* Aggiungi il padding alla sezione #info */
+#info {
+    padding: 2rem 2%; /* Padding uniforme simile all'header */
+    box-sizing: border-box; /* Assicura che il padding non influisca sulle dimensioni totali */
+}
+
+/* Altri stili */
+body {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 11px; /* Usa rem per un font-size adattivo */
+    letter-spacing: 2px;
+    line-height: 2em;
+    text-transform: none;
+    color: #000;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0 2%; /* Padding laterale uniforme per il corpo */
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    color: black; /* Colore dei link */
+    text-decoration: none; /* Rimuove la sottolineatura predefinita */
+}
+
+a:hover {
+    text-decoration: underline; /* Aggiunge una sottolineatura al passaggio del mouse */
+    color: black; /* Mantiene il colore nero anche al passaggio del mouse */
+}
+
+.menu {
+    display: flex;
+    align-items: center; /* Allinea verticalmente gli elementi */
+}
+
+.menu a {
+    text-decoration: none; /* Rimuove la sottolineatura predefinita */
+    color: black; /* Colore del testo */
+    margin-top: 0px;
+    margin-right: 1rem;
+    margin-bottom: 0px;
+    line-height: 1.5; /* Imposta un'altezza di linea coerente */
+}
+
+.menu a.artist-name {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5rem; /* Usa rem per font-size adattivo */
+    letter-spacing: 2px;
+    line-height: 1.2em;
+    text-transform: none;
+    color: #0a0a0a;
+}
+
+.menu a:not(.artist-name) {
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem; /* Usa rem per font-size adattivo */
+    letter-spacing: 1px;
+    text-transform: none;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.menu a.button {
+    color: black;
+}
+
+.menu a.button:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+}
+
+.social a {
+    margin: 0 0.5rem; /* Usa rem per margini adattivi */
+}
+
+.social a img {
+    width: 1rem; /* Usa rem per dimensioni adattive */
+    height: 1rem;
+    transition: opacity 0.3s ease; /* Aggiunta transizione per opacità */
+}
+
+.social a:hover img {
+    opacity: 1; /* L'icona sotto il mouse resta nera */
+}
+
+.social:hover a img {
+    opacity: 0.3; /* Le altre icone diventano trasparenti al 50% */
+}
+
+.social:hover a:hover img {
+    opacity: 1; /* Mantiene l'icona sotto il mouse nera */
+}
+
+.music-grid {
+    display: grid;
+    padding: 2rem 2%;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1rem;
+}
+
+.music-item {
+    position: relative;
+    width: 300px;
+    margin: 1rem; /* Usa rem per margini adattivi */
+    overflow: hidden; /* Aggiunge un overflow nascosto */
+}
+
+.music-item img {
+    width: 100%;
+    display: block; /* Assicura che le immagini si comportino come block */
+}
+
+.music-item .info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.5rem; /* Usa rem per padding adattivo */
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-family: 'Aguzzo Italic', sans-serif;
+}
+
+.music-item:hover .info {
+    opacity: 1;
+}
+
+/* Contenitore principale */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Altezza minima per coprire l'intera finestra */
+}
+
+/* Main è impostato per espandersi e occupare lo spazio rimanente */
+main {
+    flex: 1;
+}
+
+/* Footer con margine superiore automatico per spingerlo in basso */
+#footer-container {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.8rem; /* Usa rem per dimensioni adattive del testo */
+    padding: 2rem 0; /* Padding uniforme verticale */
+    color: #333; /* Colore del testo */
+    margin-top: auto; /* Spinge il footer verso il fondo della pagina */
+}
+
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 2rem;
+    margin: 1rem;
+    position: relative; /* Posizionamento relativo per i figli */
+    z-index: 1001; /* Assicura che l'icona di apertura del menu sia sopra il menu mobile */
+}
+
+.mobile-menu-icon .menu-icon {
+    display: block; /* Mostra l'icona del menu per default */
+}
+
+.mobile-menu-icon .close-icon {
+    display: none; /* Nasconde l'icona di chiusura per default */
+}
+
+.mobile-menu-icon img {
+    width: 1.5rem; /* Imposta la larghezza dell'immagine */
+    height: 1.5rem; /* Imposta l'altezza dell'immagine */
+}
+
+.mobile-menu {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1000; /* Posiziona il menu mobile sotto l'icona di chiusura */
+    overflow: hidden; /* Blocca lo scroll */
+    transform: translateX(-100%); /* Posiziona il menu fuori dalla vista */
+    transition: transform 0.3s ease; /* Aggiunge transizione per l'animazione */
+    opacity: 0; /* Inizialmente invisibile */
+    pointer-events: none; /* Disabilita l'interazione */
+}
+
+.mobile-menu.open {
+    display: flex;
+    transform: translateX(0); /* Mostra il menu con animazione */
+    opacity: 1; /* Rende il menu visibile */
+    pointer-events: all; /* Abilita l'interazione */
+}
+
+.mobile-menu .close-icon {
+    position: absolute;
+    top: 1rem; /* Regola la distanza dall'alto */
+    right: 1rem; /* Regola la distanza dal lato destro */
+    font-size: 2rem; /* Dimensioni dell'icona di chiusura */
+    cursor: pointer;
+    z-index: 1001; /* Assicura che l'icona di chiusura sia sopra il menu */
+}
+
+.mobile-menu a {
+    font-size: 1.5rem; /* Font-size più grande per le voci del menu mobile */
+    margin: 1rem;
+    text-align: center; /* Allinea il testo al centro */
+}
+
+.mobile-menu .social {
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Allinea i social al centro in fondo */
+    gap: 1rem; /* Spazio tra le icone dei social */
+}
+
+.mobile-menu .social a {
+    margin: 0; /* Rimuove il margine aggiuntivo */
+}
+
+.mobile-menu .social img {
+    width: 1rem; /* Usa rem per dimensioni adattive */
+    height: 1rem;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+.mobile-header {
+    display: none; /* Nasconde mobile-header per default */
+}
+
+#home {
+    display: flex;
+    padding: 3rem 2% 1rem 2%; /* top right bottom left */;
+    justify-content: center; /* Centra il video orizzontalmente */
+    align-items: center; /* Centra il video verticalmente */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; /* Assicura che il padding non influisca sulle dimensioni totali */
+    overflow: hidden; /* Rimuove eventuali barre di scorrimento */
+}
+
+#home iframe {
+    width: 80vw; /* Imposta la larghezza del video al 80% della larghezza della finestra */
+    height: 45vw; /* Imposta l'altezza del video al 45% della larghezza della finestra */
+    max-width: 1000px; /* Imposta una larghezza massima per evitare che il video diventi troppo grande */
+    max-height: 562.5px; /* Imposta un'altezza massima per mantenere le proporzioni del video */
+    border: none; /* Rimuove il bordo predefinito dell'iframe */
+}
+
+@media (max-width: 768px) {
+    .mobile-header {
+        display: flex; /* Mostra mobile-header sui dispositivi mobili */
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        font-size: 1.5rem;
+        /*padding: 1rem;*/
+        box-sizing: border-box;
+    }
+
+    #home iframe {
+        width: 90vw; /* Più largo sui dispositivi mobili */
+        height: 50vw; /* Maggiore altezza sui dispositivi mobili */
+    }
+
+    .music-grid {
+        grid-template-columns: 1fr; /* Una colonna che occupa tutto lo spazio disponibile */
+        justify-items: center; /* Centra gli elementi della griglia */
+    }
+
+    .music-item {
+        width: 100%; /* L'immagine occupa tutta la larghezza del contenitore */
+        max-width: 400px; /* Limita la larghezza massima dell'immagine */
+    }
+
+    .music-item img {
+        width: 100%; /* L'immagine si adatta alla larghezza del contenitore */
+    }
+
+    .menu {
+        display: none; /* Nasconde il menu desktop sui dispositivi mobili */
+    }
+
+    .social {
+        display: none; /* Nasconde i social desktop sui dispositivi mobili */
+    }
+
+    .mobile-menu-icon {
+        display: block; /* Mostra l'icona del menu mobile */
+    }
+
+    .mobile-menu {
+        display: none; /* Nasconde il menu mobile per default */
+    }
+
+    .mobile-menu.open {
+        display: flex; /* Mostra il menu mobile quando è aperto */
+    }
+
+    .menu,
+    .social {
+        display: none; /* Nasconde il menu desktop e i social sui dispositivi mobili */
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-header {
+        display: none; /* Nasconde mobile-header sui dispositivi desktop */
+    }
+}

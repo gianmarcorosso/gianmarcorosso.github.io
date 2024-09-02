@@ -1,8 +1,19 @@
+// Carica i componenti dell'intestazione e del piè di pagina
 document.addEventListener("DOMContentLoaded", function() {
-    loadComponent('header', 'components/header');
-    loadComponent('footer', 'components/footer');
+    loadComponent('header', 'components/header.html');
+    loadComponent('footer', 'components/footer.html');
+
+    // Configura il router di Page.js
+    page('/', loadPage('home'));
+    page('/info', loadPage('info'));
+    page('/live', loadPage('live'));
+    page('/music', loadPage('music'));
+
+    // Avvia il router
+    page();
 });
 
+// Carica un componente HTML
 function loadComponent(id, url) {
     fetch(url)
         .then(response => response.text())
@@ -16,6 +27,7 @@ function loadComponent(id, url) {
         .catch(error => console.error('Error loading component:', error));
 }
 
+// Configura il menu mobile
 function setupMobileMenu() {
     const menuIcon = document.querySelector('.mobile-menu-icon');
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -41,4 +53,19 @@ function setupMobileMenu() {
             }
         }
     });
+}
+
+// Carica una pagina specifica usando il routing di Page.js
+function loadPage(pageName) {
+    return function(ctx, next) {
+        fetch(`pages/${pageName}.html`)
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('main').innerHTML = data;
+                // Carica di nuovo l'intestazione e il piè di pagina se necessario
+                loadComponent('header', 'components/header.html');
+                loadComponent('footer', 'components/footer.html');
+            })
+            .catch(error => console.error('Error loading page:', error));
+    };
 }

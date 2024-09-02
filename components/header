@@ -1,8 +1,8 @@
 <header id="header">
     <!-- Versione desktop dell'header -->
     <div class="menu">
-        <a href="index" class="artist-name">Tanarouge</a>
-        <a href="index" class="home-link">Home</a>
+        <a href="home" class="artist-name">Tanarouge</a>
+        <a href="home" class="home-link">Home</a>
         <a href="music">Music</a>
         <a href="live">Live</a>
         <!-- <a href="https://your-shopify-store.com" target="_blank" class="button">Store</a> -->
@@ -17,14 +17,14 @@
     </div>
     <!-- Versione mobile dell'header -->
     <div class="mobile-header">
-        <a href="index" class="artist-name">Tanarouge</a>
+        <a href="home" class="artist-name">Tanarouge</a>
         <div class="mobile-menu-icon">
             <img src="assets/icons/plus.svg" alt="Menu Open" class="menu-icon open-icon">
             <img src="assets/icons/cross.svg" alt="Menu Close" class="menu-icon close-icon">
         </div>
     </div>
     <div class="mobile-menu">
-        <a href="index" class="home-link">Home</a>
+        <a href="home" class="home-link">Home</a>
         <a href="music">Music</a>
         <a href="live">Live</a>
         <a href="info">Info</a>

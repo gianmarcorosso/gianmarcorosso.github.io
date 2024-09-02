@@ -1,7 +1,7 @@
 // Carica i componenti dell'intestazione e del piè di pagina
 document.addEventListener("DOMContentLoaded", function() {
-    loadComponent('header', 'components/header.html');
-    loadComponent('footer', 'components/footer.html');
+    loadComponent('header', 'components/header');
+    loadComponent('footer', 'components/footer');
 
     // Configura il router di Page.js
     page('/', loadPage('home'));

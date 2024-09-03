@@ -32,6 +32,20 @@ body {
     padding: 0 2%; /* Padding laterale uniforme per il corpo */
 }
 
+.live-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 2%;
+}
+
+.live-section iframe {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
 main {
     flex: 1;
 }
@@ -260,11 +274,6 @@ main {
 
 body.menu-open {
     overflow: hidden;
-}
-
-.live-section iframe {
-    max-width: 100%;
-    height: auto;
 }
 
 .mobile-header {

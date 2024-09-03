@@ -196,6 +196,7 @@ a:hover {
 /* Main è impostato per espandersi e occupare lo spazio rimanente */
 main {
     flex: 1;
+    padding: 0 2%;
 }
 
 /* Footer con margine superiore automatico per spingerlo in basso */

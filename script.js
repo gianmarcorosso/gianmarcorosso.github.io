@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
     page('/live', loadPage('live'));
     page('/music', loadPage('music'));
 
+    page('*', () => {
+        loadPage('404.html');
+    });
+
     // Avvia il router
     page();
 });

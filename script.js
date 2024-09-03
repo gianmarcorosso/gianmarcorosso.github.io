@@ -1,21 +1,38 @@
-// Assicurati di includere Page.js nel tuo HTML
 document.addEventListener("DOMContentLoaded", function() {
     loadComponent('header', 'components/header.html');
     loadComponent('footer', 'components/footer.html');
 
-    // Configura il router di Page.js
-    page('/', loadPage('home')); // Home page quando accedi a tanarouge.com
-    page('/info', loadPage('info'));
-    page('/live', loadPage('live'));
-    page('/music', loadPage('music'));
+    // Configura il router di Page.js con titoli specifici
+    page('/', loadPage('home', 'Tanarouge')); // Home page
+    page('/info', loadPage('info', 'Info —— Tanarouge')); // Pagina info
+    page('/live', loadPage('live', 'Live —— Tanarouge')); // Pagina live
+    page('/music', loadPage('music', 'Music —— Tanarouge')); // Pagina musica
 
     page('*', () => {
-        loadPage('404.html');
+        loadPage('404', '404 Not Found —— Tanarouge'); // Pagina 404
     });
 
     // Avvia il router
     page();
 });
+
+// Carica una pagina specifica usando il routing di Page.js
+function loadPage(pageName, pageTitle) {
+    return function(ctx, next) {
+        fetch(`pages/${pageName}.html`)
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('main').innerHTML = data;
+                // Aggiorna il titolo della pagina
+                document.title = pageTitle;
+                // Carica di nuovo l'intestazione e il piè di pagina se necessario
+                loadComponent('header', 'components/header.html');
+                loadComponent('footer', 'components/footer.html');
+            })
+            .catch(error => console.error('Error loading page:', error));
+    };
+}
+
 
 // Carica un componente HTML
 function loadComponent(id, url) {

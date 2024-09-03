@@ -32,24 +32,28 @@ body {
     padding: 0 2%; /* Padding laterale uniforme per il corpo */
 }
 
-/* Sezione live con iframe Twitch centrato e adattabile */
+/* Stile della sezione live */
 .live-section {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
     flex-direction: column;
     padding: 2rem 2%;
-    flex: 1; /* Assicura che la sezione prenda tutto lo spazio disponibile */
+    box-sizing: border-box; /* Assicura che il padding non influisca sulle dimensioni totali */
+    height: calc(100vh - 4rem); /* Altezza della sezione (modifica in base al footer) */
+    background-color: #f5f5f5; /* Sfondo chiaro per migliorare la visibilità */
 }
 
+/* Stile dell'iframe di Twitch */
 .live-section iframe {
-    width: 80vw; /* Imposta la larghezza del video al 80% della larghezza della finestra */
-    height: 45vw; /* Imposta l'altezza del video al 45% della larghezza della finestra */
-    max-width: 1000px; /* Imposta una larghezza massima per evitare che il video diventi troppo grande */
-    max-height: 562.5px; /* Imposta un'altezza massima per mantenere le proporzioni del video */
-    border-radius: 10px;
+    width: 100%; /* Occupa tutta la larghezza del contenitore */
+    height: 100%; /* Occupa tutta l'altezza del contenitore */
+    max-width: 1000px; /* Limita la larghezza massima */
+    max-height: 562.5px; /* Limita l'altezza massima per mantenere le proporzioni del video */
     border: none; /* Rimuove il bordo predefinito dell'iframe */
+    border-radius: 10px; /* Aggiunge angoli arrotondati */
 }
+
 
 /* Mobile adjustments for live section */
 @media (max-width: 768px) {

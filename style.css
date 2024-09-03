@@ -17,7 +17,10 @@ header {
 }
 
 /* Altri stili */
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     font-weight: 400;
     font-style: normal;
     font-size: 11px; /* Usa rem per un font-size adattivo */
@@ -25,15 +28,17 @@ body {
     line-height: 2em;
     text-transform: none;
     color: #000;
-    margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    padding: 0 2%; /* Padding laterale uniforme per il corpo */
 }
 
 main {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem; /* Puoi adattare il padding in base alle tue esigenze */
+    box-sizing: border-box;
 }
 
 a {
@@ -165,6 +170,11 @@ a:hover {
 /* Main è impostato per espandersi e occupare lo spazio rimanente */
 main {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem; /* Puoi adattare il padding in base alle tue esigenze */
+    box-sizing: border-box;
 }
 
 /* Footer con margine superiore automatico per spingerlo in basso */
@@ -272,77 +282,13 @@ body.menu-open {
     justify-content: center; /* Centra il video orizzontalmente */
     align-items: center; /* Centra il video verticalmente */
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 6rem); /* Altezza dinamica in base allo schermo */
     box-sizing: border-box; /* Assicura che il padding non influisca sulle dimensioni totali */
-    overflow: hidden; /* Rimuove eventuali barre di scorrimento */
+    overflow: hidden; /* Impedisce lo scrolling */
 }
 
-#home iframe {
-    width: 80vw; /* Imposta la larghezza del video al 80% della larghezza della finestra */
-    height: 45vw; /* Imposta l'altezza del video al 45% della larghezza della finestra */
-    max-width: 1000px; /* Imposta una larghezza massima per evitare che il video diventi troppo grande */
-    max-height: 562.5px; /* Imposta un'altezza massima per mantenere le proporzioni del video */
-    border: none; /* Rimuove il bordo predefinito dell'iframe */
-}
-
-@media (max-width: 768px) {
-    .mobile-header {
-        display: flex; /* Mostra mobile-header sui dispositivi mobili */
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        font-size: 1.5rem;
-        /*padding: 1rem;*/
-        box-sizing: border-box;
-    }
-
-    #home iframe {
-        width: 90vw; /* Più largo sui dispositivi mobili */
-        height: 50vw; /* Maggiore altezza sui dispositivi mobili */
-    }
-
-    .music-grid {
-        grid-template-columns: 1fr; /* Una colonna che occupa tutto lo spazio disponibile */
-        justify-items: center; /* Centra gli elementi della griglia */
-    }
-
-    .music-item {
-        width: 100%; /* L'immagine occupa tutta la larghezza del contenitore */
-        max-width: 400px; /* Limita la larghezza massima dell'immagine */
-    }
-
-    .music-item img {
-        width: 100%; /* L'immagine si adatta alla larghezza del contenitore */
-    }
-
-    .menu {
-        display: none; /* Nasconde il menu desktop sui dispositivi mobili */
-    }
-
-    .social {
-        display: none; /* Nasconde i social desktop sui dispositivi mobili */
-    }
-
-    .mobile-menu-icon {
-        display: block; /* Mostra l'icona del menu mobile */
-    }
-
-    .mobile-menu {
-        display: none; /* Nasconde il menu mobile per default */
-    }
-
-    .mobile-menu.open {
-        display: flex; /* Mostra il menu mobile quando è aperto */
-    }
-
-    .menu,
-    .social {
-        display: none; /* Nasconde il menu desktop e i social sui dispositivi mobili */
-    }
-}
-
-@media (min-width: 769px) {
-    .mobile-header {
-        display: none; /* Nasconde mobile-header sui dispositivi desktop */
-    }
+#home video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ritaglia il video per coprire l'intero contenitore */
 }

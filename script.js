@@ -8,9 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     page('/live', loadPage('live', 'Live —— Tanarouge')); // Pagina live
     page('/music', loadPage('music', 'Music —— Tanarouge')); // Pagina musica
 
-    page('*', () => {
-        loadPage('404', '404 Not Found —— Tanarouge'); // Pagina 404
-    });
+    page('*', loadPage('404', '404 Not Found —— Tanarouge')); // Pagina 404
 
     // Avvia il router
     page();
@@ -30,8 +28,6 @@ function loadPage(pageName, pageTitle) {
             .catch(error => console.error('Error loading page:', error));
     };
 }
-
-
 
 // Carica un componente HTML
 function loadComponent(id, url) {
@@ -75,19 +71,4 @@ function setupMobileMenu() {
             }
         });
     }
-}
-
-// Carica una pagina specifica usando il routing di Page.js
-function loadPage(pageName) {
-    return function(ctx, next) {
-        fetch(`pages/${pageName}.html`)
-            .then(response => response.text())
-            .then(data => {
-                document.querySelector('main').innerHTML = data;
-                // Carica di nuovo l'intestazione e il piè di pagina se necessario
-                loadComponent('header', 'components/header.html');
-                loadComponent('footer', 'components/footer.html');
-            })
-            .catch(error => console.error('Error loading page:', error));
-    };
 }

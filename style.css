@@ -32,36 +32,35 @@ body {
     padding: 0 2%; /* Padding laterale uniforme per il corpo */
 }
 
-/* Stile della sezione live */
 .live-section {
     display: flex;
-    justify-content: center; /* Centra orizzontalmente */
-    align-items: center; /* Centra verticalmente */
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     padding: 2rem 2%;
-    box-sizing: border-box; /* Assicura che il padding non influisca sulle dimensioni totali */
-    height: calc(100vh - 4rem); /* Altezza della sezione (modifica in base al footer) */
-    background-color: #f5f5f5; /* Sfondo chiaro per migliorare la visibilità */
+    box-sizing: border-box;
+    height: calc(100vh - 4rem);
+    background-color: #f5f5f5;
 }
 
-/* Stile dell'iframe di Twitch */
 .live-section iframe {
-    width: 100%; /* Occupa tutta la larghezza del contenitore */
-    height: 100%; /* Occupa tutta l'altezza del contenitore */
-    max-width: 1000px; /* Limita la larghezza massima */
-    max-height: 562.5px; /* Limita l'altezza massima per mantenere le proporzioni del video */
-    border: none; /* Rimuove il bordo predefinito dell'iframe */
-    border-radius: 10px; /* Aggiunge angoli arrotondati */
+    width: 100%;
+    height: auto; /* Altezza automatica per mantenere proporzioni */
+    max-width: 1000px;
+    max-height: 562.5px;
+    border: none;
+    border-radius: 10px;
+    aspect-ratio: 16 / 9; /* Mantiene il rapporto 16:9 */
 }
-
 
 /* Mobile adjustments for live section */
 @media (max-width: 768px) {
     .live-section iframe {
-        width: 90vw; /* Aumenta la larghezza sui dispositivi mobili */
-        height: 50vw; /* Aumenta l'altezza sui dispositivi mobili */
+        width: 90vw; /* Larghezza adattiva sui dispositivi mobili */
+        height: auto;
     }
 }
+
 
 main {
     flex: 1;

@@ -23,15 +23,14 @@ function loadPage(pageName, pageTitle) {
             .then(response => response.text())
             .then(data => {
                 document.querySelector('main').innerHTML = data;
-                // Aggiorna il titolo della pagina
-                document.title = pageTitle;
-                // Carica di nuovo l'intestazione e il piè di pagina se necessario
+                document.title = pageTitle; // Imposta il titolo della pagina
                 loadComponent('header', 'components/header.html');
                 loadComponent('footer', 'components/footer.html');
             })
             .catch(error => console.error('Error loading page:', error));
     };
 }
+
 
 
 // Carica un componente HTML

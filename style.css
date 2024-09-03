@@ -32,18 +32,31 @@ body {
     padding: 0 2%; /* Padding laterale uniforme per il corpo */
 }
 
+/* Sezione live con iframe Twitch centrato e adattabile */
 .live-section {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 2rem 2%;
+    flex: 1; /* Assicura che la sezione prenda tutto lo spazio disponibile */
 }
 
 .live-section iframe {
-    max-width: 100%;
-    height: auto;
+    width: 80vw; /* Imposta la larghezza del video al 80% della larghezza della finestra */
+    height: 45vw; /* Imposta l'altezza del video al 45% della larghezza della finestra */
+    max-width: 1000px; /* Imposta una larghezza massima per evitare che il video diventi troppo grande */
+    max-height: 562.5px; /* Imposta un'altezza massima per mantenere le proporzioni del video */
     border-radius: 10px;
+    border: none; /* Rimuove il bordo predefinito dell'iframe */
+}
+
+/* Mobile adjustments for live section */
+@media (max-width: 768px) {
+    .live-section iframe {
+        width: 90vw; /* Aumenta la larghezza sui dispositivi mobili */
+        height: 50vw; /* Aumenta l'altezza sui dispositivi mobili */
+    }
 }
 
 main {

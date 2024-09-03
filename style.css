@@ -206,7 +206,7 @@ main {
     font-size: 0.8rem; /* Usa rem per dimensioni adattive del testo */
     padding: 2rem 0; /* Padding uniforme verticale */
     color: #333; /* Colore del testo */
-    margin-top: auto; /* Spinge il footer verso il fondo della pagina */
+    /* margin-top: auto; /* Spinge il footer verso il fondo della pagina */
 }
 
 .mobile-menu-icon {

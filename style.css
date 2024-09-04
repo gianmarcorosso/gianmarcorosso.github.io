@@ -30,6 +30,11 @@ body {
     flex-direction: column;
     min-height: 100vh;
     padding: 0 2%; /* Padding laterale uniforme per il corpo */
+    background-image: url('assets/images/background.png');
+    background-size: cover; /* Copre l'intera area della pagina */
+    background-repeat: no-repeat; /* Evita che l'immagine si ripeta */
+    background-position: center; /* Centra l'immagine */
+    background-attachment: fixed; /* Mantiene l'immagine fissa durante lo scroll */
 }
 
 .live-section {

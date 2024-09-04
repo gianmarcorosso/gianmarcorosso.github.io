@@ -16,6 +16,15 @@ header {
     box-sizing: border-box; /* Assicura che il padding non influisca sulle dimensioni totali */
 }
 
+.description {
+    font-size: 1rem;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
 /* Altri stili */
 body {
     font-weight: 400;
@@ -70,7 +79,7 @@ main {
     flex: 1;
 }
 
-a {
+a, p {
     color: black; /* Colore dei link */
     text-decoration: none; /* Rimuove la sottolineatura predefinita */
 }
@@ -310,6 +319,24 @@ body.menu-open {
     height: 100%;
     box-sizing: border-box; /* Assicura che il padding non influisca sulle dimensioni totali */
     overflow: hidden; /* Rimuove eventuali barre di scorrimento */
+    position: relative; /* Necessario per posizionare l'overlay in modo assoluto */
+    text-align: center; /* Centra il testo orizzontalmente */
+    color: white; /* Colore del testo */
+}
+
+.background-image {
+    max-width: 50%; /* Makes the image smaller by limiting its width */
+    max-height: 50vh; /* Limits the height to ensure it doesn't become too tall */
+    object-fit: contain; /* Ensures the entire image is visible within the container */
+    border-radius: 10px; /* Adds rounded corners */
+}
+
+.text-content {
+    max-width: 50%; /* Limits the width of the text container */
+    color: white; /* Text color */
+    text-align: justify;
+    padding: 20px;
+    border-radius: 10px; /* Optional: Adds rounded corners to the text container */
 }
 
 #home iframe {
@@ -321,6 +348,20 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
+    #home {
+        flex-direction: column; /* Imposta la direzione a colonna */
+        align-items: center; /* Centra il contenuto verticalmente */
+    }
+
+    .background-image,
+    .text-content {
+        max-width: 90%; /* Riduce la larghezza al 90% della finestra */
+    }
+
+    .background-image {
+        margin-bottom: 20px; /* Spazio inferiore per separare l'immagine dal testo */
+    }
+
     .mobile-header {
         display: flex; /* Mostra mobile-header sui dispositivi mobili */
         justify-content: space-between;

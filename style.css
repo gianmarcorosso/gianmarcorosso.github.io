@@ -178,7 +178,10 @@ a:hover {
 
 .music-item img {
     width: 100%;
-    display: block; /* Assicura che le immagini si comportino come block */
+    display: block;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    padding: 4px;
 }
 
 .music-item .info {

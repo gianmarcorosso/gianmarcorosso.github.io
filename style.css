@@ -1,4 +1,8 @@
 /* Stile dell'header */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 header {
     display: flex;
     font-family: 'Aguzzo Regular' !important;
@@ -29,7 +33,7 @@ header {
 body {
     font-weight: 400;
     font-style: normal;
-    font-size: 11px; /* Usa rem per un font-size adattivo */
+    font-size: 0.875rem; /* Usa rem per un font-size adattivo */
     letter-spacing: 2px;
     line-height: 2em;
     text-transform: none;
@@ -77,6 +81,7 @@ body {
 
 main {
     flex: 1;
+    padding: 0 2%;
 }
 
 a, p {
@@ -247,7 +252,7 @@ main {
 }
 
 .mobile-menu {
-    display: flex;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -394,14 +399,6 @@ body.menu-open {
         width: 100%; /* L'immagine si adatta alla larghezza del contenitore */
     }
 
-    .menu {
-        display: none; /* Nasconde il menu desktop sui dispositivi mobili */
-    }
-
-    .social {
-        display: none; /* Nasconde i social desktop sui dispositivi mobili */
-    }
-
     .mobile-menu-icon {
         display: block; /* Mostra l'icona del menu mobile */
     }
@@ -412,11 +409,6 @@ body.menu-open {
 
     .mobile-menu.open {
         display: flex; /* Mostra il menu mobile quando è aperto */
-    }
-
-    .menu,
-    .social {
-        display: none; /* Nasconde il menu desktop e i social sui dispositivi mobili */
     }
 }
 

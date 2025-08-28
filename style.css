@@ -39,6 +39,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     padding: 0 2%; /* Padding laterale uniforme per il corpo */
+    overflow: hidden; /* Blocca lo scroll verticale sulla home */
     /*background-image: url('assets/images/background.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -315,16 +316,18 @@ body.menu-open {
 
 #home {
     display: flex;
-    padding: 3rem 2% 1rem 2%; /* top right bottom left */;
-    justify-content: center; /* Centra il video orizzontalmente */
-    align-items: center; /* Centra il video verticalmente */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100%;
-    box-sizing: border-box; /* Assicura che il padding non influisca sulle dimensioni totali */
+    height: 100vh; /* Imposta altezza pari a quella della finestra */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
     overflow: hidden; /* Rimuove eventuali barre di scorrimento */
-    position: relative; /* Necessario per posizionare l'overlay in modo assoluto */
-    text-align: center; /* Centra il testo orizzontalmente */
-    color: white; /* Colore del testo */
+    position: relative;
+    text-align: center;
+    color: white;
 }
 
 .background-image {

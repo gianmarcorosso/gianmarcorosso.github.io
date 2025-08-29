@@ -20,10 +20,20 @@ function loadPage(pageName, pageTitle) {
         fetch(`pages/${pageName}.html`)
             .then(response => response.text())
             .then(data => {
-                document.querySelector('main').innerHTML = data;
+                const mainElement = document.querySelector('main');
+                if (mainElement) {
+                    mainElement.innerHTML = data;
+                }
                 document.title = pageTitle; // Imposta il titolo della pagina
                 loadComponent('header', 'components/header.html');
                 loadComponent('footer', 'components/footer.html');
+
+                if (pageName === 'live') {
+                    const bitWidget = document.querySelector('.bit-widget-initializer');
+                    if (bitWidget && window.Bandsintown && typeof window.Bandsintown.loadWidget === 'function') {
+                        window.Bandsintown.loadWidget();
+                    }
+                }
             })
             .catch(error => console.error('Error loading page:', error));
     };
@@ -34,7 +44,12 @@ function loadComponent(id, url) {
     fetch(url)
         .then(response => response.text())
         .then(data => {
-            document.getElementById(id + '-container').innerHTML = data;
+            const container = document.getElementById(id + '-container');
+            if (container) {
+                container.innerHTML = data;
+            } else {
+                console.warn(`Elemento ${id}-container non trovato.`);
+            }
 
             if (id === 'header') {
                 setupMobileMenu();

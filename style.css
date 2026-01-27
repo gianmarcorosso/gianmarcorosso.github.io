@@ -315,9 +315,10 @@ body.menu-open {
 
 #home {
     display: flex;
+    flex-direction: column; /* Immagine sopra, testo sotto */
     padding: 3rem 2% 1rem 2%; /* top right bottom left */;
-    justify-content: center; /* Centra il video orizzontalmente */
-    align-items: center; /* Centra il video verticalmente */
+    justify-content: center; /* Centra il contenuto verticalmente */
+    align-items: center; /* Centra il contenuto orizzontalmente */
     width: 100%;
     height: 100%;
     box-sizing: border-box; /* Assicura che il padding non influisca sulle dimensioni totali */
@@ -328,18 +329,27 @@ body.menu-open {
 }
 
 .background-image {
-    max-width: 50%; /* Makes the image smaller by limiting its width */
-    max-height: 50vh; /* Limits the height to ensure it doesn't become too tall */
-    object-fit: contain; /* Ensures the entire image is visible within the container */
+    width: 100%; /* Estende l'immagine a tutta la larghezza disponibile */
+    max-height: 70vh; /* Limita l'altezza per non occupare troppo spazio verticale */
+    object-fit: cover; /* Copre l'area mantenendo le proporzioni */
     border-radius: 10px; /* Adds rounded corners */
 }
 
 .text-content {
-    max-width: 50%; /* Limits the width of the text container */
+    width: 100%; /* Stessa larghezza dell'immagine */
     color: white; /* Text color */
     text-align: justify;
     padding: 20px;
+    box-sizing: border-box;
     border-radius: 10px; /* Optional: Adds rounded corners to the text container */
+}
+
+.mobile-bio {
+    display: none; /* Nasconde la bio corta su desktop */
+}
+
+.desktop-bio {
+    display: block; /* Mostra la bio lunga su desktop */
 }
 
 #home iframe {
@@ -361,8 +371,17 @@ body.menu-open {
         max-width: 90%; /* Riduce la larghezza al 90% della finestra */
     }
 
+
     .background-image {
         margin-bottom: 20px; /* Spazio inferiore per separare l'immagine dal testo */
+    }
+
+    .mobile-bio {
+        display: block; /* Mostra la bio corta su mobile */
+    }
+
+    .desktop-bio {
+        display: none; /* Nasconde la bio lunga su mobile */
     }
 
     .mobile-header {

@@ -1,42 +1,59 @@
+// Route configuration
+const routes = {
+    '/': { page: 'home', title: 'Tanarouge' },
+    '/home': { page: 'home', title: 'Tanarouge' },
+    '/music': { page: 'music', title: 'Music | Tanarouge' },
+    '/live': { page: 'live', title: 'Live | Tanarouge' },
+    '/info': { page: 'info', title: 'Info | Tanarouge' }
+};
+
 document.addEventListener("DOMContentLoaded", function() {
     loadComponent('header', 'components/header.html');
     loadComponent('footer', 'components/footer.html');
 
-    // Configura il router di Page.js con titoli specifici
-    page('/', loadPage('home', 'Tanarouge')); // Home page
-    page('/info', loadPage('info', 'Info —— Tanarouge')); // Pagina info
-    page('/live', loadPage('live', 'Live —— Tanarouge')); // Pagina live
-    page('/music', loadPage('music', 'Music —— Tanarouge')); // Pagina musica
+    // Load page based on current URL
+    handleRoute();
 
-    page('*', loadPage('404', '404 Not Found —— Tanarouge')); // Pagina 404
-
-    // Avvia il router
-    page();
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', handleRoute);
 });
 
-// Carica una pagina specifica usando il routing di Page.js
-function loadPage(pageName, pageTitle) {
-    return function(ctx, next) {
-        fetch(`pages/${pageName}.html`)
-            .then(response => response.text())
-            .then(data => {
-                const mainElement = document.querySelector('main');
-                if (mainElement) {
-                    mainElement.innerHTML = data;
-                }
-                document.title = pageTitle; // Imposta il titolo della pagina
-                loadComponent('header', 'components/header.html');
-                loadComponent('footer', 'components/footer.html');
+// Handle routing based on current URL
+function handleRoute() {
+    const path = window.location.pathname;
+    const route = routes[path] || routes['/'];
 
-                if (pageName === 'live') {
-                    const bitWidget = document.querySelector('.bit-widget-initializer');
-                    if (bitWidget && window.Bandsintown && typeof window.Bandsintown.loadWidget === 'function') {
-                        window.Bandsintown.loadWidget();
-                    }
+    loadPage(route.page, route.title);
+}
+
+// Navigate to a new route
+function navigateTo(path) {
+    window.history.pushState({}, '', path);
+    handleRoute();
+}
+
+// Load page content
+function loadPage(pageName, pageTitle) {
+    fetch(`pages/${pageName}.html`)
+        .then(response => response.text())
+        .then(data => {
+            const mainElement = document.querySelector('main');
+            if (mainElement) {
+                mainElement.innerHTML = data;
+            }
+            document.title = pageTitle;
+
+            // Close mobile menu if open
+            closeMobileMenu();
+
+            // Handle special page initializations
+            if (pageName === 'live') {
+                if (window.Bandsintown && typeof window.Bandsintown.loadWidget === 'function') {
+                    window.Bandsintown.loadWidget();
                 }
-            })
-            .catch(error => console.error('Error loading page:', error));
-    };
+            }
+        })
+        .catch(error => console.error('Error loading page:', error));
 }
 
 // Carica un componente HTML
@@ -53,12 +70,29 @@ function loadComponent(id, url) {
 
             if (id === 'header') {
                 setupMobileMenu();
+                setupHeaderLinks();
             }
         })
         .catch(error => console.error('Error loading component:', error));
 }
 
-// Configura il menu mobile
+// Close mobile menu
+function closeMobileMenu() {
+    const menuIcon = document.querySelector('.mobile-menu-icon');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const body = document.body;
+
+    if (mobileMenu && mobileMenu.classList.contains('open')) {
+        mobileMenu.classList.remove('open');
+        body.classList.remove('menu-open');
+        if (menuIcon) {
+            menuIcon.querySelector('.menu-icon').style.display = 'block';
+            menuIcon.querySelector('.close-icon').style.display = 'none';
+        }
+    }
+}
+
+// Setup mobile menu
 function setupMobileMenu() {
     const menuIcon = document.querySelector('.mobile-menu-icon');
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -67,23 +101,39 @@ function setupMobileMenu() {
     if (menuIcon && mobileMenu) {
         menuIcon.addEventListener('click', function() {
             const isOpen = mobileMenu.classList.toggle('open');
-            body.classList.toggle('menu-open'); // Blocca lo scroll del body
+            body.classList.toggle('menu-open');
 
-            // Cambia l'icona da + a X e viceversa
+            // Toggle icon between + and X
             menuIcon.querySelector('.menu-icon').style.display = isOpen ? 'none' : 'block';
             menuIcon.querySelector('.close-icon').style.display = isOpen ? 'block' : 'none';
         });
 
-        // Aggiungi un evento per chiudere il menu quando si clicca all'esterno del menu
+        // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             if (!mobileMenu.contains(event.target) && !menuIcon.contains(event.target)) {
-                if (mobileMenu.classList.contains('open')) {
-                    mobileMenu.classList.remove('open');
-                    body.classList.remove('menu-open');
-                    menuIcon.querySelector('.menu-icon').style.display = 'block';
-                    menuIcon.querySelector('.close-icon').style.display = 'none';
-                }
+                closeMobileMenu();
             }
         });
     }
+}
+
+// Setup header links for SPA navigation
+function setupHeaderLinks() {
+    const headerContainer = document.getElementById('header-container');
+    if (!headerContainer) return;
+
+    const links = headerContainer.querySelectorAll('a[data-page]');
+    links.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const pageName = this.getAttribute('data-page');
+
+            // Map page name to route path
+            let path = '/';
+            if (pageName === 'home') path = '/';
+            else if (pageName) path = `/${pageName}`;
+
+            navigateTo(path);
+        });
+    });
 }

@@ -22,35 +22,14 @@
   -->
 
     <section id="bandsintown-section">
-        <!-- Script ufficiale Bandsintown -->
-        <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
         <a class="bit-widget-initializer" data-artist-name="id_15610204" data-display-local-dates="true" data-display-past-dates="false" data-auto-style="true" data-text-color="#000000" data-link-color="#ff0000" data-background-color="#ffffff" data-display-limit="5" data-display-start-time="true" data-display-lineup="false" data-display-play-my-city="false" data-display-play-my-city-type="upcoming" data-display-play-my-city-radius="50"></a>
     </section>
 
-    <!-- Script per SPA: inizializza Bandsintown dopo che la pagina è nel DOM -->
-    <script>
-        function initBandsintown() {
-            const widget = document.querySelector('.bit-widget-initializer');
-            if (widget && window.Bandsintown && typeof window.Bandsintown.loadWidget === 'function') {
-                window.Bandsintown.loadWidget(widget);
-            }
-        }
-
-        // Esempio: Page.js hook per la pagina live
-        if (window.page) {
-            page('/live', function (ctx, next) {
-                // Contenuto live.html viene caricato dinamicamente nel main
-                // Dopo averlo inserito nel DOM:
-                initBandsintown();
-            });
-        } else {
-            // fallback: pagina statica
-            initBandsintown();
-        }
-    </script>
-
     <!-- Script principale SPA -->
     <script src="script.js"></script>
+    <!-- Script ufficiale Bandsintown -->
+    <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
+    <script src="bandsintown-init.js"></script>
 </body>
 
 </html>
